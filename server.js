@@ -48,6 +48,14 @@ app.get("/testOptions", (req, res) => {
     res.render('testOptions', {user: req.session.user, flightDetails: req.body, airports: airports, details: details});
 });
 
+app.post("/profile", (req, res) => {
+    res.render('profile')
+});
+
+app.get("/profile", (req, res) => {
+    res.render('profile', {user: req.session.user})
+})
+
 app.listen(5464, () => {
     console.log('Server started on http://localhost:5464');
 });
