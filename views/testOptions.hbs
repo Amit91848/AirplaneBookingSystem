@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flight-tickets-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.individual-flight-ticket-container {
+    height: 8rem;
+    width: 65%;
+    /* background: lightpink; */
+    border: solid 1px black;
+    margin: 1rem;
+    display: flex;
+}
+
+.logo-container {
+    /* background: lightblue; */
+    height: 100%;
+    width: 20%;
+}
+
+.flight-ticket-details {
+    margin-left: 4rem;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    /* grid-template-rows: 2fr 1fr; */
+}
+
+.first-column, .third-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+}
+
+.first-column {
+    align-items: flex-end;
+}
+
+.third-column {
+    align-items: flex-start;
+}
+
+.second-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-column {
+}
+
+.fourth-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.fourth-column p {
+    margin: 0;
+    padding: 0;
+}
+
+.number {
+    font-size: 0.9rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    position: relative;
+    left: 0.5rem;
+    font-weight: bold;
+}
+
+.time {
+    font-weight: bold;
+    margin: 0;
+}
+
+.flight-ticket-icon {
+    height: 2.5rem;
+    width: 3rem;
+}
+
+.confirmBookingBtn {
+    grid-column: 1 / 4;
+    border: none;
+}
+
+.companyLogo {
+    height: 100%;
+    width: 100%;
+    border-right: solid 1px black;
+}
+    </style>
+</head>
+<body>
+    <div class="flight-tickets-container">
+        {{#each details as |detail|}}
+            <div class="individual-flight-ticket-container">
+                <div class="logo-container">
+                    <img class="companyLogo" src="{{detail.logo}}" alt="">
+                </div>
+                <div class="flight-ticket-details">
+                    <div class="first-column">
+                        <p class="time">{{detail.arr}}</p>
+                        <p class="ticket-place arrival-place">{{flightDetails.from}}</p>
+                    </div>
+                    <div class="second-column">
+                        <img class="flight-ticket-icon" src="flight-icon.svg" alt="">
+                    </div>
+                    <div class="third-column">
+                        <p class="time">{{detail.dep}}</p>
+                        <p class="ticket-place departure-place"> {{flightDetails.to}} </p>
+                    </div>
+                    <div class="fourth-column">
+                        <p class="adults number">Adults: {{flightDetails.adults}} </p>
+                        <p class="children number">Children: {{flightDetails.children}} </p>
+                        <p class="price">Price:{{detail.price}}</p>
+                    </div>
+                    <button class="confirmBookingBtn" type="submit">Confirm Booking</button>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>

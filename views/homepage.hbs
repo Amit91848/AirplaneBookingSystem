@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Ticket Booking</title>
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"  />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="modal-background"></div>
+        <div class="navbar-container">
+            <div class="left-container">
+                <span class="logo">Las Venturas Airlines</span>
+            </div>
+                <ul class="right-container">
+                    <a class="home" href="/homepage">Home</a>
+                    <a class="profile" href="/profile">Profile</a>
+                    {{#if user}}
+                        <a class="logout" href="/logout" >Logout {{user.name}}</a>
+                    {{else}}
+                        <li class="login-signup">Login/Signup</li>
+                    {{/if}}
+                </ul>
+        </div>
+        <div class="modal-container">
+            <div class="modal-heading">
+                <div class="login-form-button modal-heading-button">
+                    <p class="modal-heading-text"> Login</p>
+                </div>
+                <div class="signup-form-button modal-heading-button">
+                    <p class="modal-heading-text"> Signup </p>
+                </div>
+            </div>
+            <div class="modal-main">
+                <form class="modal-form login-form" action="/loginAuth" method="post">
+                    <input class="modal-input-box modal-email-input" type="text" name="email" placeholder="Email"> <br>
+                    <input type="text" name="password" placeholder="Password" class="modal-input-box modal-password-input">
+                    <button class="modal-submit" type="submit">Login</button>
+                </form>
+
+                <form class="modal-form signup-form" action="/signupAuth" method="post">
+                    <input type="text" name="name" placeholder="Name" class="modal-input-box modal-username-input">
+                    <input type="text" name="email" placeholder="Email" class="modal-input-box modal-email-input">
+                    <input type="text" name="password" placeholder="Password" class="modal-input-box modal-password-input">
+
+                    <button class="modal-submit" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="main-content">
+                <p class="title">Where would you <br><strong> like to go?</strong></p>
+                <form class="flight-details" action="/search-flights" method="post"><br>
+                    <label class="form-label" for="from">From</label><br>
+                    <input type="text" name="from" list="from"/>
+                    <datalist id="from">
+                        {{#each airports as |airport|}}
+                            <option value="{{airport.city_name}}">{{airport.airport_name}} , {{airport.IATA_code}}, {{airport.city_name}}</option>
+                        {{/each}}
+                    </datalist>
+                     <br>
+
+                    <label class="form-label" for="to">To</input><br>
+                    <input type="text" name="to" list="to">
+                    <datalist id="to">
+                        {{#each airports as |airport|}}
+                            <option value="{{airport.city_name}}">{{airport.airport_name}} , {{airport.IATA_code}}, {{airport.city_name}}</option>
+                        {{/each}}
+                    </datalist>
+                    <br>
+
+                    <label class="form-label" for="Date">Date</label><br>
+                    <input class="dateInput" type="date" name="date">
+
+                    <label class="form-label" for="adults"> Adults </label>
+                    <input class="passengerNumber"  type="number" name="adults" MIN="1" MAX="5">
+                    <label class="form-label" for="child"> Children </label>
+                    <input class="passengerNumber"  type="number" name="children" MIN="1" MAX="5"> <br>
+
+                    <button class="bookBtn" type="submit">Book Now</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-container"></div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

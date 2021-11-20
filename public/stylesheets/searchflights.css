@@ -1,0 +1,227 @@
+* {padding: 0; margin: 0}
+
+body {
+    background: #daebff;
+}
+
+.navbar-container {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,4,72,1) 0%, rgba(9,9,121,1) 66%, rgba(8,40,142,1) 100%, rgba(0,212,255,1) 100%);
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.left-container {
+    height: 20px;
+    width: 30%;
+    position: relative;
+    left: 5rem;
+    top: -1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.right-container {
+    position: relative;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-left: 1.5rem;
+}
+
+.right-container li {
+    list-style-type: none;
+}
+
+.right-container > * {
+    text-decoration: none;
+    color: white;
+}
+
+.right-container > *:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.right-container li {
+    list-style-type: none;
+}
+
+.right-container li:hover {
+    cursor: pointer;
+}
+
+.flight-details-container {
+    /* background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,4,72,1) 0%, rgba(9,9,121,1) 66%, rgba(8,40,142,1) 100%, rgba(0,212,255,1) 100%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;;
+    height: 5rem;
+}
+
+.flight-details {
+    width: 90%;
+    height: 50%;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.input-group {
+    max-width: 13rem;
+}
+
+.searchBtn {
+    position: relative;
+    width: 10rem;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(96deg,#53b2fe,#065af3);
+    color: white;
+    font-size: 1.3rem;
+}
+
+#basic-addon1 {
+    border: none;
+    color: #008cff;
+    background: #0a223d;
+}
+
+.dateInput {
+    border: none;
+}
+
+.flight-tickets-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.individual-flight-ticket-container {
+    height: 8rem;
+    width: 65%;
+    /* background: lightpink; */
+    border: solid 1px black;
+    margin: 2rem;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.logo-container {
+    /* background: lightblue; */
+    height: 100%;
+    background: white;
+    width: 20%;
+}
+
+.flight-ticket-details {
+    margin-left: 4rem;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    /* grid-template-rows: 2fr 1fr; */
+}
+
+.first-column, .third-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+}
+
+.first-column {
+    align-items: flex-end;
+}
+
+.third-column {
+    align-items: flex-start;
+}
+
+.second-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.third-column {
+}
+
+.fourth-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.fourth-column p {
+    margin: 0;
+    padding: 0;
+}
+
+.number {
+    font-size: 0.9rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    position: relative;
+    left: 0.5rem;
+    font-weight: bold;
+}
+
+.time {
+    font-weight: bold;
+    margin: 0;
+}
+
+.flight-ticket-icon {
+    height: 2.5rem;
+    width: 3rem;
+}
+
+.confirmBookingBtn {
+    grid-column: 1 / 4;
+    border: none;
+    position: relative;
+    top: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.companyLogo {
+    height: 100%;
+    width: 100%;
+    border-right: solid 1px black;
+}
+
+.loading-screen {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: lightgrey;
+    opacity: 0.3;
+    z-index: 2;
+    display: flex;
+}
+
+.loader-container {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+svg path,
+svg rect{
+  fill: skyblue;
+}
