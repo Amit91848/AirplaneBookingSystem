@@ -28,6 +28,20 @@ const UserSchema = mongoose.Schema({
         type: 'string',
         require: 'true',
         minLength: 8
+    },
+    mobileNumber: {
+        type: String,
+        minLength: 10,
+        maxLength: 10,
+    },
+    birthDay: {
+        type: String,
+    },
+    Gender: {
+        type: String,
+    },
+    martialStatus: {
+        type: String,
     }
 });
 

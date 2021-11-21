@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const UserModel = mongoose.model('UserModel', UserSchema);
 const TicketModel = mongoose.model('TicketModel', TicketSchema);
 
+
+// Ticket Database Saving
 async function saveTicketToDb(req, res) {
     try {
         let ticketObj = req.body;
@@ -15,6 +17,7 @@ async function saveTicketToDb(req, res) {
     }
 }
 
+// User login and Signup
 async function userSignup(req, res) {
     let userObj = req.body;
     const data = await UserModel.create(userObj);
@@ -40,6 +43,17 @@ async function userLogout(req, res) {
     res.redirect('/homepage');
 }
 
+// Profile 
+
+async function handleGetReqProfile(req, res) {
+    if(req.session.user) {
+        // console.log(req.session.user);
+        res.render('profile', {user: req.session.user});
+    } else {
+        res.redirect('/homepage');
+    }
+}
+
 module.exports = {
-    userSignup, userLogin, userLogout, saveTicketToDb
+    userSignup, userLogin, userLogout, saveTicketToDb, handleGetReqProfile
 }

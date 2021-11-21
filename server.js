@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { userSignup, userLogin, userLogout, saveTicketToDb } = require("./src/Controllers/Controller");
+const { userSignup, userLogin, userLogout, saveTicketToDb, handleGetReqProfile } = require("./src/Controllers/Controller");
 const session = require("cookie-session");
 const { airports } = require("./src/Controllers/flight-details/airport-details");
 const { details } = require("./src/Controllers/flight-details/flight-ticket-details");
@@ -48,13 +48,7 @@ app.get("/testOptions", (req, res) => {
     res.render('testOptions', {user: req.session.user, flightDetails: req.body, airports: airports, details: details});
 });
 
-app.post("/profile", (req, res) => {
-    res.render('profile')
-});
-
-app.get("/profile", (req, res) => {
-    res.render('profile', {user: req.session.user})
-})
+app.get("/profile", handleGetReqProfile);
 
 app.listen(5464, () => {
     console.log('Server started on http://localhost:5464');

@@ -4,6 +4,101 @@ body {
     background: #daebff;
 }
 
+.editModal-background {
+    background: rgba(46, 46, 49, 0.5);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editModal-container{
+    background: white;
+    height: 23rem;
+    width: 30rem;
+    z-index: 4;
+}
+
+.editModal-heading {
+    margin-top: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.margin-left {
+    margin-left: 2rem;
+}
+
+.editModal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    grid-gap: 1.5rem;
+}
+
+.row-1 {
+    display: flex;
+    grid-gap: 2.5rem;
+}
+
+.row-2 {
+    display: flex;
+    grid-gap: 2.5rem;
+}
+
+.edit-input-container {
+    height: 5rem;
+    width: 11.5rem;
+}
+
+.edit-heading-container {
+    height: 1.5rem; 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.edit-dropdown-container {
+    height: 2.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.edit-dropdown-container > * {
+    border: 0.5px solid lightgrey;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.editModal-btn-container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    left: 43%;
+    width: 50%;
+    top: 5%;
+}
+
+.editSaveBtn {
+    border: none;
+    height: 2.5rem;
+    width: 7rem;
+    border-radius: 5px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+}
+
+.cancelBtn {
+    color: grey;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
 .navbar-container {
     height: 10vh;
     display: flex;
@@ -277,4 +372,11 @@ p {
 
 .login-details-container {
     height: 17rem;
+}
+
+.editProfile {
+    border: none;
+    width: 5rem;
+    background: white;
+    color: dodgerblue; 
 }

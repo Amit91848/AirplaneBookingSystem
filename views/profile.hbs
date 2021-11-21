@@ -12,6 +12,69 @@
 </head>
 <body>
     <div class="fluid-container">
+        <div class="editModal-background">
+            <div class="editModal-container">
+                <div class="editModal-heading margin-left">
+                    Edit Profile
+                </div>
+                <div class="editModal margin-left">
+                    <div class="row-1">
+                        <div class="edit-input-container name-container">
+                            <div class="edit-heading-container">
+                                <p class="editfullName">Full Name</p>
+                            </div>
+                            <div class="edit-dropdown-container">
+                                <input value = {{user.name}} type="text" name="name" id="">
+                            </div>
+                        </div>
+                        <div class="edit-input-container birthDay-container">
+                            <div class="edit-heading-container">
+                                <p class="editBirthDay">Birthday</p>
+                            </div>
+                            <div class="edit-dropdown-container">
+                                <input value={{#if user.birthDay}}
+                                    {{user.birthDay}}
+                                {{else}}
+                                    ""
+                                {{/if}}
+                                 type="date" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <div class="edit-input-container gender-container">
+                            <div class="edit-heading-container">
+                                <p class="editGender">Gender</p>
+                            </div>
+                            <div class="edit-dropdown-container">
+                                <select name="gender" id="">
+                                    <option value="none" selected hidden disabled>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="edit-input-container maritalStatus-container">
+                            <div class="edit-heading-container">
+                                <p class="editMaritalStatus">Marital Status</p>
+                            </div>
+                            <div class="edit-dropdown-container">
+                                <select name="maritalStatus" id="">
+                                    <option value="none" selected hidden disabled>Status</option>
+                                    <option value="married">Married</option>
+                                    <option value="single">Single</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editModal-btn-container">
+                    <div class="cancelBtn">Cancle</div>
+                    <button class="editSaveBtn" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
         <div class="loading-screen">
             <div class="loader-container">
                 <div class="spinner-border text-light" role="status">
@@ -39,11 +102,11 @@
                     <div class="profilePhotoContainer">
                         <div class="profileBackground"></div>
                         <div class="profileText">
-                            <p class="profileP">AS</p>
+                            <p class="profileP"></p>
                         </div>
                     </div>
                     <div class="details">
-                        <div class="name">Amit Sharma</div>
+                        <div class="name">{{user.name}}</div>
                         <div class="personalProfile">Personal Profile</div>
                     </div>
                     <ul class="menu">
@@ -90,19 +153,38 @@
                             <div class="details-table">
                                 <div class="rows">
                                     <div class="row-heading">Name</div>
-                                    <div class="row-info">Amit Sharma</div>
+                                    <div class="row-info">{{user.name}}</div>
                                 </div>
                                 <div class="rows">
-                                    <div class="row-heading">BirthDay</div>
-                                    <div class="row-info">13-12-2002</div>
+                                    <div class="row-heading">Birthday</div>
+                                    {{#if user.birthDay}}
+                                        <div class="row-info">{{user.birthDay}}</div>
+                                           
+                                    {{else}}
+                                        <button class="editProfile">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    {{/if}}
                                 </div>
                                 <div class="rows">
                                     <div class="row-heading">Gender</div>
-                                    <div class="row-info">Male</div>
+                                    {{#if user.Gender}}
+                                        <div class="row-info">{{user.Gender}}</div>
+                                    {{else}}
+                                        <button class="editProfile">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    {{/if}} 
                                 </div>
                                 <div class="rows">
                                     <div class="row-heading">Marital Status</div>
-                                    <div class="row-info">Single</div>
+                                    {{#if user.martialStatus}}
+                                        <div class="row-info">{{user.martialStatus}}</div>
+                                    {{else}}
+                                        <button class="editProfile">
+                                            <i class="fas fa-plus"></i> Add
+                                        </button>
+                                    {{/if}} 
                                 </div>
                             </div>
                         </div>
@@ -137,5 +219,6 @@
             </div>
         </div>
     </div>
+    <script src="profile.js"></script>
 </body>
 </html>
