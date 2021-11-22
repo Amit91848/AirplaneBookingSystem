@@ -40,7 +40,7 @@ const UserSchema = mongoose.Schema({
     Gender: {
         type: String,
     },
-    martialStatus: {
+    maritalStatus: {
         type: String,
     }
 });
@@ -84,7 +84,9 @@ UserSchema.pre('save', async function() {
     let salt = await bcrypt.genSalt();
     let hashedString = await bcrypt.hash(this.password, salt);
     this.password = hashedString;
-})
+});
+
+// password = $2b$10$ZR4AAioWXLbjCtTN5.VAu.eJMGIQ1hPBWUGyCluVKTYjwIitQkmH2
 
 
 module.exports = {

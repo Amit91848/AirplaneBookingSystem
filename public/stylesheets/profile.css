@@ -20,6 +20,8 @@ body {
     height: 23rem;
     width: 30rem;
     z-index: 4;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .editModal-heading {
@@ -99,6 +101,63 @@ body {
     font-weight: bold;
 }
 
+.cancelBtn:hover {
+    cursor: pointer;
+}
+
+.passwordEditModal {
+    height: 100%;
+    width: 100%;
+}
+
+.passwordContainer {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 65%;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.password-input-container {
+    height: 5rem;
+    width: 100%;
+}
+
+.pswrdCont {
+    width: 100%;
+}
+
+.pswrdCont:focus {
+    outline: none;
+}
+
+.passwordSaveBtn {
+    border: none;
+    height: 2.5rem;
+    width: 7rem;
+    border-radius: 5px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+}
+
+.lessMarginTop {
+    margin-top: 0.5rem !important;
+}
+
+.forgotPassword {
+    position: absolute;
+    left: 75%;
+    font-size: 0.9rem;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.forgotPassword:hover {
+    cursor: pointer;
+}
+
 .navbar-container {
     height: 10vh;
     display: flex;
@@ -142,7 +201,7 @@ body {
 
 .right-container > *:visited {
     text-decoration: none;
-    color: white;
+    color: white !important; 
 }
 
 .right-container li {
@@ -176,6 +235,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -1.5rem;
 }
 
 .secContainer {
@@ -257,6 +317,20 @@ body {
     align-items: center;
     border-radius: 10px;
     /* color: dodgerblue; */
+}
+
+.menu li:hover {
+    cursor: pointer;
+}
+
+.logout {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+}
+
+.logout:visited {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
 }
 
 .logo {

@@ -14,64 +14,112 @@
     <div class="fluid-container">
         <div class="editModal-background">
             <div class="editModal-container">
-                <div class="editModal-heading margin-left">
-                    Edit Profile
-                </div>
-                <div class="editModal margin-left">
-                    <div class="row-1">
-                        <div class="edit-input-container name-container">
-                            <div class="edit-heading-container">
-                                <p class="editfullName">Full Name</p>
+                <div class="profileEditModal">
+                    <div class="editModal-heading margin-left">
+                        Edit Profile
+                    </div>
+                    <div class="editModal margin-left" action="/upateProfile" method="post">
+                        <div class="row-1">
+                            <div class="edit-input-container name-container">
+                                <div class="edit-heading-container">
+                                    <p class="editfullName">Full Name</p>
+                                </div>
+                                <div class="edit-dropdown-container">
+                                    <input class="modal-name-input" value = '{{user.name}}' type="text" name="name" id="">
+                                </div>
                             </div>
-                            <div class="edit-dropdown-container">
-                                <input value = {{user.name}} type="text" name="name" id="">
+                            <div class="edit-input-container birthDay-container">
+                                <div class="edit-heading-container">
+                                    <p class="editBirthDay">Birthday</p>
+                                </div>
+                                <div class="edit-dropdown-container">
+                                    <input value={{#if user.birthDay}}
+                                        {{user.birthDay}}
+                                    {{else}}
+                                        ""
+                                    {{/if}}
+                                    type="date" name="birthDay" class="modal-birthday-input">
+                                </div>
                             </div>
                         </div>
-                        <div class="edit-input-container birthDay-container">
-                            <div class="edit-heading-container">
-                                <p class="editBirthDay">Birthday</p>
+                        <div class="row-2">
+                            <div class="edit-input-container gender-container">
+                                <div class="edit-heading-container">
+                                    <p class="editGender">Gender</p>
+                                </div>
+                                <div class="edit-dropdown-container">
+                                    <select class="modal-input-gender" name="gender" id="">
+                                        {{#if user.Gender}}
+                                            <option value="{{user.Gender}}" selected hidden disabled>{{user.Gender}}</option>
+                                        {{else}}
+                                            <option value="none" selected hidden disabled>Gender</option>
+                                        {{/if}}
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="edit-dropdown-container">
-                                <input value={{#if user.birthDay}}
-                                    {{user.birthDay}}
-                                {{else}}
-                                    ""
-                                {{/if}}
-                                 type="date" name="" id="">
+                            <div class="edit-input-container maritalStatus-container">
+                                <div class="edit-heading-container">
+                                    <p class="editMaritalStatus">Marital Status</p>
+                                </div>
+                                <div class="edit-dropdown-container">
+                                    <select class="modal-input-marital-status" name="maritalStatus" id="">
+                                        {{#if user.maritalStatus}}Gender
+                                            <option value="{{user.martialStatus}}" selected hidden disabled>{{user.maritalStatus}}</option>
+                                        {{else}}
+                                            <option value="none" selected hidden disabled>Status</option>
+                                        {{/if}}
+                                        <option value="Married">Married</option>
+                                        <option value="Single">Single</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row-2">
-                        <div class="edit-input-container gender-container">
-                            <div class="edit-heading-container">
-                                <p class="editGender">Gender</p>
-                            </div>
-                            <div class="edit-dropdown-container">
-                                <select name="gender" id="">
-                                    <option value="none" selected hidden disabled>Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="edit-input-container maritalStatus-container">
-                            <div class="edit-heading-container">
-                                <p class="editMaritalStatus">Marital Status</p>
-                            </div>
-                            <div class="edit-dropdown-container">
-                                <select name="maritalStatus" id="">
-                                    <option value="none" selected hidden disabled>Status</option>
-                                    <option value="married">Married</option>
-                                    <option value="single">Single</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="editModal-btn-container">
-                    <div class="cancelBtn">Cancle</div>
-                    <button class="editSaveBtn" type="submit">Save</button>
+                    <div class="editModal-btn-container">
+                        <div class="cancelBtn">Cancel</div>
+                        <button class="editSaveBtn" type="submit">Save</button>
+                    </div>
+                </div>
+                <div class="passwordEditModal">
+                    <div class="editModal-heading margin-left lessMarginTop">
+                        Edit Profile
+                    </div>
+                    <div class="passwordContainer">
+                        <div class="password-input-container newpasswordContainer">
+                            <div class="edit-heading-container">
+                                Enter Old Password
+                            </div>
+                            <div class="edit-dropdown-container pswrdCont">
+                                <input class="oldPasswordInput" type="text" name="oldPassword" id="">
+                            </div>
+                        </div>
+                        <div class="password-input-container oldpasswordContainer">
+                            <div class="edit-heading-container">
+                                Enter New Password
+                            </div>
+                            <div class="edit-dropdown-container pswrdCont">
+                                <input class="newPasswordInput" type="text" name="newPassword" id="">
+                            </div>
+                        </div>
+                        <div class="password-input-container confirmpasswordContainer">
+                            <div class="edit-heading-container">
+                                Confirm New Password
+                            </div>
+                            <div class="edit-dropdown-container pswrdCont">
+                                <input class="confirmPasswordInput" type="text" name="confirmPassword" id="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="savePasswordBtnContainer">
+                        <div class="editModal-btn-container">
+                            <div class="cancelBtn">Cancel</div>
+                            <button class="passwordSaveBtn" type="submit">Save</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,7 +179,7 @@
                                 <i class="fas fa-sign-out-alt"></i>
                             </div>
                             <div class="text">
-                                <p>Logout</p>
+                                <a class="logout" href="/logout">Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -178,8 +226,8 @@
                                 </div>
                                 <div class="rows">
                                     <div class="row-heading">Marital Status</div>
-                                    {{#if user.martialStatus}}
-                                        <div class="row-info">{{user.martialStatus}}</div>
+                                    {{#if user.maritalStatus}}
+                                        <div class="row-info">{{user.maritalStatus}}</div>
                                     {{else}}
                                         <button class="editProfile">
                                             <i class="fas fa-plus"></i> Add
@@ -211,6 +259,7 @@
                                 <div class="rows">
                                     <div class="row-heading">Passoword</div>
                                     <div class="row-info">*****</div>
+                                    <div class="forgotPassword">Forgot Password?</div>
                                 </div>
                             </div>
                         </div>
