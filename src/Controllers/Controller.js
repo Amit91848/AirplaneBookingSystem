@@ -44,9 +44,35 @@ async function userLogout(req, res) {
 
 // Profile 
 
+async function getAllTicketsForUser(user) {
+    const tickets = await TicketModel.find({userId: user._id}, null, {sort: {date: 1}}, function(err, model) {
+        if(err) {
+            console.log(err);
+        } else {
+            // console.log(model);
+        }
+    }).clone();
+    return tickets;
+}
+
+async function filterUpcomingTickets(tickets) {
+    return tickets.filter((ticket) => {
+        return Date.parse(ticket.date) > Date.now();
+    });
+}
+
+async function filterExpiredTickets(tickets) {
+    return tickets.filter((ticket) => {
+        return Date.parse(ticket.date) <= Date.now();
+    });
+}
+
 async function handleGetReqProfile(req, res) {
     if(req.session.user) {
-        res.render('profile', {user: req.session.user});
+        let tickets = await getAllTicketsForUser(req.session.user);
+        let upcomingTickets = await filterUpcomingTickets(tickets);
+        let expiredTickets = await filterExpiredTickets(tickets);
+        res.render('profile', {user: req.session.user, upcomingTickets: upcomingTickets, expiredTickets: expiredTickets});
     } else {
         res.redirect('/homepage');
     }
@@ -63,9 +89,9 @@ async function handleUpdateProfile(req, res) {
     req.session.user = profileData;
     const user = UserModel.findByIdAndUpdate(req.session.user._id, profileData, function(err, model) {
         if(err) {
-            console.log("Error = " + err);
+            // console.log("Error = " + err);
         } else {
-            console.log("Modal = " + model);
+            // console.log("Modal = " + model);
         }
     });
     res.redirect("/profile");

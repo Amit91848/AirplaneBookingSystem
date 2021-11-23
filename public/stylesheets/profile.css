@@ -6,8 +6,8 @@ body {
 
 .editModal-background {
     background: rgba(46, 46, 49, 0.5);
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     position: absolute;
     z-index: 3;
     display: flex;
@@ -216,8 +216,7 @@ body {
     height: 100%;
     width: 100%;
     position: absolute;
-    background: lightgrey;
-    opacity: 0.3;
+    background: rgba(211, 211, 211, 0.3);
     z-index: -2; /* change */
     display: flex;
 }
@@ -229,13 +228,13 @@ body {
 }
 
 .main-container {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     /* background: red; */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -1.5rem;
+    margin-top: 1.5rem;
 }
 
 .secContainer {
@@ -248,7 +247,20 @@ body {
 }
 
 .leftSecContainer {
-    height: 80%;
+    height: 35rem;
+    width: 100%;
+    background: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px;
+}
+
+.ticket-sort-heading {
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
+.whiteBackground {
+    height: 60vh;
     width: 100%;
     background: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -308,15 +320,22 @@ body {
 
 .menu li {
     background: 1rem;
-    /* border: 1px solid black; */
     list-style: none;
     height: 2.75rem;
     width: 100%;
-    /* background: #e5f3fd; */
     display: flex;
     align-items: center;
     border-radius: 10px;
-    /* color: dodgerblue; */
+}
+
+.text a {
+    text-decoration: none;
+    color: rgb(33, 33, 33);
+}
+
+.menuSelected {
+    color: dodgerblue !important;
+    background: skyblue;
 }
 
 .menu li:hover {
@@ -341,8 +360,6 @@ body {
 .text {
     margin-left: 1rem;
     font-weight: bold;
-    position: relative;
-    top: 0.4rem;
 }
 
 .rightSecContainer {
@@ -453,4 +470,106 @@ p {
     width: 5rem;
     background: white;
     color: dodgerblue; 
+}
+
+.individual-flight-ticket-container {
+    height: 8rem;
+    width: 90%;
+    /* background: lightpink; */
+    border: solid 1px black;
+    margin: 2rem;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.logo-container {
+    /* background: lightblue; */
+    height: 100%;
+    background: white;
+    width: 20%;
+}
+
+.flight-ticket-details {
+    margin-left: 4rem;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    /* grid-template-rows: 2fr 1fr; */
+}
+
+.first-column, .third-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.3rem;
+}
+
+.first-column {
+    align-items: flex-end;
+}
+
+.third-column {
+    align-items: flex-start;
+}
+
+.second-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.third-column {
+}
+
+.fourth-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.fourth-column p {
+    margin: 0;
+    padding: 0;
+}
+
+.number {
+    font-size: 0.9rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    position: relative;
+    left: 0.5rem;
+    font-weight: bold;
+}
+
+.time {
+    font-weight: bold;
+    margin: 0;
+}
+
+.flight-ticket-icon {
+    height: 2.5rem;
+    width: 3rem;
+}
+
+.companyLogo {
+    height: 100%;
+    width: 100%;
+    border-right: solid 1px black;
+}
+
+.fixed {
+    position: sticky !important;
+    top: 2rem;
+}
+
+.tickets-container {
+    height: 100%;
+}
+
+.ticket-details-container {
+    height: auto;
 }

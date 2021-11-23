@@ -152,6 +152,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .third-column {
@@ -221,7 +222,9 @@ body {
     justify-content: center;
 }
 
-svg path,
-svg rect{
-  fill: skyblue;
+.sticky {
+    position: fixed;
+    top: 1rem;
+    z-index: 10;
+    height: 2rem;
 }

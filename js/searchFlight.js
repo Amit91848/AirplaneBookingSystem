@@ -49,6 +49,11 @@ $(document).ready(function() {
     var $bookBtn = $(".confirmBookingBtn"),
         $arrPlace = $(".input-from-arr"),
         $loadingScreen = $(".loading-screen"),
+        $dateInput = $(".dateInput"),
+        $adults = $(".adults"),
+        $children = $(".children"),
+        $flightDetailsForm = $(".flight-details"),
+        $ticketContainer = $(".individual-flight-ticket-container"),
         $depPlace = $(".input-to-dep");
     let currBooking = {};
 
@@ -62,7 +67,8 @@ $(document).ready(function() {
             for(let i = 0; i < details.length; i++){
                 if(buttonNo == details[i].no) {
                     currBooking = details[i];
-                    $.extend(currBooking, {arrPlace: $arrPlace.attr('value'), depPlace: $depPlace.attr('value')});
+                    console.log(currBooking);
+                    $.extend(currBooking, {arrPlace: $arrPlace.attr('value'), depPlace: $depPlace.attr('value'), date: $dateInput.val(), adults: $adults.val(), children: $children.val()});
                     console.log(currBooking);
                     $loadingScreen.show();
                     saveTicketDataToDb(currBooking);
@@ -74,4 +80,6 @@ $(document).ready(function() {
             }
         })
     });
+
+    
 })

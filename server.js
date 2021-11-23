@@ -32,6 +32,7 @@ app.post("/signupAuth", userSignup);
 app.post("/loginAuth", userLogin);
 app.get("/logout", userLogout);
 app.post("/saveTicketDataToDb", saveTicketToDb);
+app.get('/profile', handleGetReqProfile);
 
 app.post("/search-flights", (req ,res) => {
     if(req.session.user){
@@ -47,8 +48,6 @@ app.get("/search-flights", (req ,res) => {
 app.get("/testOptions", (req, res) => {
     res.render('testOptions', {user: req.session.user, flightDetails: req.body, airports: airports, details: details});
 });
-
-app.get("/profile", handleGetReqProfile);
 
 app.post("/updateProfile", handleUpdateProfile);
 app.post("/updatePassword", handleUpdatePassword);

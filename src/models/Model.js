@@ -77,6 +77,18 @@ const TicketSchema = mongoose.Schema({
     userId: {
         type: String,
         require: true
+    },
+    date: {
+        type: String,
+        require: true
+    },
+    adults: {
+        type: String,
+        require: true
+    },
+    children: {
+        type: String,
+        require: true
     }
 });
 
