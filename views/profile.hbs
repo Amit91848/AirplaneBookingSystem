@@ -12,6 +12,8 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
@@ -277,82 +279,115 @@
                             </div>
                         </div>
                     </div>
-                    <div id="ticket-card" class="ticket-details-container card animate__animated animate__fadeIn">
-                        <div class="heading-container">
-                            <div class="heading">
-                                <p class="headingText">Tickets</p>
-                            </div>
-                            <div class="subheading">
-                                <p class="subheadingText">Manage your Tickets</p>
-                            </div>
-                        </div>
-                        <div class="upcoming-tickets tickets-container">
-                            <div class="ticket-sort-heading">
-                                Upcoming Flights
-                            </div>
-                            {{#each upcomingTickets as |upcomingTicket|}}
-                                <div class="individual-flight-ticket-container ">
-                                    <div class="logo-container">
-                                        <img class="companyLogo" src="{{upcomingTicket.logo}}" alt="">
-                                    </div>
-                                    <div class="flight-ticket-details">
-                                        <div class="first-column">
-                                            <p class="time">{{upcomingTicket.arr}}</p>
-                                            <p class="ticket-place arrival-place">{{upcomingTicket.depPlace}}</p>
-                                        </div>
-                                        <div class="second-column">
-                                            <img class="flight-ticket-icon" src="flight-icon.svg" alt="">
-                                            <p class="flight-date">{{upcomingTicket.date}}</p>
-                                        </div>
-                                        <div class="third-column">
-                                            <p class="time">{{upcomingTicket.dep}}</p>
-                                            <p class="ticket-place departure-place"> {{upcomingTicket.arrPlace}} </p>
-                                        </div>
-                                        <div class="fourth-column">
-                                            <p class="adults number">Adults: {{upcomingTicket.adults}} </p>
-                                            <p class="children number">Children: {{upcomingTicket.children}} </p>
-                                            <p class="price">Price:₹{{upcomingTicket.price}}</p>
-                                        </div>
-                                    </div>
+                   
+                    {{#if user.admin}}
+                        <div id="dashboard-card" class="dashboard-details-container card animate__animated animate__fadeIn">
+                            <div class="heading-container">
+                                <div class="heading">
+                                    <p class="headingText">Dashboard</p>
                                 </div>
-                            {{/each}}
-                        </div>
-                        <div class="expired-tickets tickets-container">
-                            <div class="ticket-sort-heading">
-                                Previous Flights
-                            </div>
-                            {{#each expiredTickets as |expiredTicket|}}
-                                <div class="individual-flight-ticket-container ">
-                                    <div class="logo-container">
-                                        <img class="companyLogo" src="{{expiredTicket.logo}}" alt="">
-                                    </div>
-                                    <div class="flight-ticket-details">
-                                        <div class="first-column">
-                                            <p class="time">{{expiredTicket.arr}}</p>
-                                            <p class="ticket-place arrival-place">{{expiredTicket.depPlace}}</p>
-                                        </div>
-                                        <div class="second-column">
-                                            <img class="flight-ticket-icon" src="flight-icon.svg" alt="">
-                                            <p class="flight-date">{{expiredTicket.date}}</p>
-                                        </div>
-                                        <div class="third-column">
-                                            <p class="time">{{expiredTicket.dep}}</p>
-                                            <p class="ticket-place departure-place"> {{expiredTicket.arrPlace}} </p>
-                                        </div>
-                                        <div class="fourth-column">
-                                            <p class="adults number">Adults: {{expiredTicket.adults}} </p>
-                                            <p class="children number">Children: {{expiredTicket.children}} </p>
-                                            <p class="price">Price:₹{{expiredTicket.price}}</p>
-                                        </div>
-                                    </div>
+                                <div class="subheading">
+                                    {{!-- <p class="subheadingText">Manage your Tickets</p> --}}
                                 </div>
-                            {{/each}}
+                            </div>
+                            <div id="pie-chart-container">
+
+                            </div>
                         </div>
-                    </div>
+                    {{else}}
+                        <div id="ticket-card" class="ticket-details-container card animate__animated animate__fadeIn">
+                            <div class="heading-container">
+                                <div class="heading">
+                                    <p class="headingText">Tickets</p>
+                                </div>
+                                <div class="subheading">
+                                    <p class="subheadingText">Manage your Tickets</p>
+                                </div>
+                            </div>
+                            <div class="upcoming-tickets tickets-container">
+                                <div class="ticket-sort-heading">
+                                    Upcoming Flights
+                                </div>
+                                {{#each upcomingTickets as |upcomingTicket|}}
+                                    <div class="individual-flight-ticket-container ">
+                                        <div class="logo-container">
+                                            <img class="companyLogo" src="{{upcomingTicket.logo}}" alt="">
+                                        </div>
+                                        <div class="flight-ticket-details">
+                                            <div class="first-column">
+                                                <p class="time">{{upcomingTicket.arr}}</p>
+                                                <p class="ticket-place arrival-place">{{upcomingTicket.depPlace}}</p>
+                                            </div>
+                                            <div class="second-column">
+                                                <img class="flight-ticket-icon" src="flight-icon.svg" alt="">
+                                                <p class="flight-date">{{upcomingTicket.date}}</p>
+                                            </div>
+                                            <div class="third-column">
+                                                <p class="time">{{upcomingTicket.dep}}</p>
+                                                <p class="ticket-place departure-place"> {{upcomingTicket.arrPlace}} </p>
+                                            </div>
+                                            <div class="fourth-column">
+                                                <p class="adults number">Adults: {{upcomingTicket.adults}} </p>
+                                                <p class="children number">Children: {{upcomingTicket.children}} </p>
+                                                <p class="price">Price:₹{{upcomingTicket.price}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                            <div class="expired-tickets tickets-container">
+                                <div class="ticket-sort-heading">
+                                    Previous Flights
+                                </div>
+                                {{#each expiredTickets as |expiredTicket|}}
+                                    <div class="individual-flight-ticket-container ">
+                                        <div class="logo-container">
+                                            <img class="companyLogo" src="{{expiredTicket.logo}}" alt="">
+                                        </div>
+                                        <div class="flight-ticket-details">
+                                            <div class="first-column">
+                                                <p class="time">{{expiredTicket.arr}}</p>
+                                                <p class="ticket-place arrival-place">{{expiredTicket.depPlace}}</p>
+                                            </div>
+                                            <div class="second-column">
+                                                <img class="flight-ticket-icon" src="flight-icon.svg" alt="">
+                                                <p class="flight-date">{{expiredTicket.date}}</p>
+                                            </div>
+                                            <div class="third-column">
+                                                <p class="time">{{expiredTicket.dep}}</p>
+                                                <p class="ticket-place departure-place"> {{expiredTicket.arrPlace}} </p>
+                                            </div>
+                                            <div class="fourth-column">
+                                                <p class="adults number">Adults: {{expiredTicket.adults}} </p>
+                                                <p class="children number">Children: {{expiredTicket.children}} </p>
+                                                <p class="price">Price:₹{{expiredTicket.price}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        anychart.onDocumentReady(async function() {
+            let data = await $.get("adminTicketsData");
+            data = await JSON.parse(data);
+            
+            var chart = anychart.pie();
+            chart.title("Prefered Flights by Users");
+
+            chart.data(data);
+
+            chart.container("pie-chart-container");
+            chart.legend().position("right");
+            chart.legend().itemsLayout("vertical");
+            chart.draw();
+        })
+    </script>
     <script src="profile.js"></script>
 </body>
 </html>

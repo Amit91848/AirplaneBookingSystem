@@ -573,3 +573,13 @@ p {
 .ticket-details-container {
     height: auto;
 }
+
+#pie-chart-container {
+    height: 27rem;
+    /* width: 3rem; */
+    overflow: visible !important;
+}
+
+#dashboard-card {
+    height: 29rem;
+}

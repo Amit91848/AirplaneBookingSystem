@@ -83,7 +83,6 @@ $(function() {
 
         if($(this).scrollTop() > $profileDetailsCard.offset().top + 20) {
             menuBtnNormal();
-            console.log("Time to make profle Btn shine");
             $loginBtn.addClass('menuSelected');
         } else {
             menuBtnNormal();

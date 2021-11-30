@@ -42,6 +42,10 @@ const UserSchema = mongoose.Schema({
     },
     maritalStatus: {
         type: String,
+    },
+    admin: {
+        type: Boolean,
+        default: false,
     }
 });
 

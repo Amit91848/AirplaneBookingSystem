@@ -67,12 +67,39 @@ async function filterExpiredTickets(tickets) {
     });
 }
 
+async function getAllTicketsData(req, res) {
+    const tickets = await TicketModel.find();
+    let indigoNo = 0, spicejetNo = 0, vistaraNo = 0;
+    tickets.map((ticket) => {
+        let ticketFlight = ticket.logo.split(".");
+        if (ticketFlight[0] == "indigoLogo") {
+            indigoNo++;
+        } else if (ticketFlight[0] == "vistaraLogo") {
+            spicejetNo++;
+        } else {
+            vistaraNo++;
+        }
+    });
+    let data = [
+        {x: "Indigo", value: indigoNo},
+        {x: "Vistara", value: vistaraNo},
+        {x: "Spicejet", value: spicejetNo}
+    ];
+
+    res.json(JSON.stringify(data));
+}
+
 async function handleGetReqProfile(req, res) {
     if(req.session.user) {
         let tickets = await getAllTicketsForUser(req.session.user);
         let upcomingTickets = await filterUpcomingTickets(tickets);
         let expiredTickets = await filterExpiredTickets(tickets);
-        res.render('profile', {user: req.session.user, upcomingTickets: upcomingTickets, expiredTickets: expiredTickets});
+        if(req.session.user.admin){
+            res.render('profile', {user: req.session.user});
+        } else {
+            res.render('profile', {user: req.session.user, upcomingTickets: upcomingTickets, expiredTickets: expiredTickets});
+        }
+        
     } else {
         res.redirect('/homepage');
     }
@@ -129,5 +156,5 @@ async function handleUpdatePassword(req, res) {
 }
 
 module.exports = {
-    userSignup, userLogin, userLogout, saveTicketToDb, handleGetReqProfile, handleUpdateProfile, handleUpdatePassword
+    userSignup, userLogin, userLogout, saveTicketToDb, handleGetReqProfile, handleUpdateProfile, handleUpdatePassword, getAllTicketsData
 }
